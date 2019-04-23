@@ -85,13 +85,16 @@ module Semian
         begin
           raw_connect
         rescue SocketError, RuntimeError => e
-          raise ResolveError.new(semian_identifier) if (e.cause || e).to_s =~ /(can't resolve)|(name or service not known)|(nodename nor servname provided, or not known)/i
+          raise ResolveError.new(semian_identifier) if (e.cause || e).to_s =~ RESOLVE_ERROR_PATTERN
           raise
         end
       end
     end
 
     private
+
+    RESOLVE_ERROR_PATTERN = /(can't resolve)|(name or service not known)|(nodename nor servname provided, or not known)/i
+    private_constant :RESOLVE_ERROR_PATTERN
 
     def resource_exceptions
       [
