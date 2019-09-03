@@ -29,4 +29,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'toxiproxy', '~> 1.0.0'
   s.add_development_dependency 'grpc'
   s.add_development_dependency 'mocha'
+
+  s.metadata = {
+    'changelog_uri' => 'https://github.com/Shopify/semian/blob/master/CHANGELOG.md',
+    'bug_tracker_uri' => 'https://github.com/Shopify/semian/issues',
+    'source_code_uri' => 'https://github.com/Shopify/semian',
+  }
 end
